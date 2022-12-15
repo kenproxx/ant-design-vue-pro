@@ -97,33 +97,6 @@ export const asyncRouterMap = [
             component: () => import('@/views/list/CardList'),
             meta: { title: 'menu.list.card-list', keepAlive: true, permission: ['table'] }
           },
-          {
-            path: '/list/search',
-            name: 'SearchList',
-            component: () => import('@/views/list/search/SearchLayout'),
-            redirect: '/list/search/article',
-            meta: { title: 'menu.list.search-list', keepAlive: true, permission: ['table'] },
-            children: [
-              {
-                path: '/list/search/article',
-                name: 'SearchArticles',
-                component: () => import('../views/list/search/Article'),
-                meta: { title: 'menu.list.search-list.articles', permission: ['table'] }
-              },
-              {
-                path: '/list/search/project',
-                name: 'SearchProjects',
-                component: () => import('../views/list/search/Projects'),
-                meta: { title: 'menu.list.search-list.projects', permission: ['table'] }
-              },
-              {
-                path: '/list/search/application',
-                name: 'SearchApplications',
-                component: () => import('../views/list/search/Applications'),
-                meta: { title: 'menu.list.search-list.applications', permission: ['table'] }
-              }
-            ]
-          }
         ]
       },
 

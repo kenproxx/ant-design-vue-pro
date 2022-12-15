@@ -5,7 +5,7 @@
         <a-form layout="inline">
           <a-row :gutter="48">
             <a-col :md="8" :sm="24">
-              <a-form-item label="规则编号">
+              <a-form-item label="Tên người dùng">
                 <a-input v-model="queryParam.id" placeholder=""/>
               </a-form-item>
             </a-col>
@@ -50,10 +50,10 @@
             </template>
             <a-col :md="!advanced && 8 || 24" :sm="24">
               <span class="table-page-search-submitButtons" :style="advanced && { float: 'right', overflow: 'hidden' } || {} ">
-                <a-button type="primary" @click="$refs.table.refresh(true)">查询</a-button>
-                <a-button style="margin-left: 8px" @click="() => this.queryParam = {}">重置</a-button>
+                <a-button type="primary" @click="$refs.table.refresh(true)">Tìm kiếm</a-button>
+                <a-button style="margin-left: 8px" @click="() => this.queryParam = {}">Reset</a-button>
                 <a @click="toggleAdvanced" style="margin-left: 8px">
-                  {{ advanced ? '收起' : '展开' }}
+                  {{ advanced ? 'Thu hẹp' : 'Mở rộng' }}
                   <a-icon :type="advanced ? 'up' : 'down'"/>
                 </a>
               </span>
@@ -63,15 +63,17 @@
       </div>
 
       <div class="table-operator">
-        <a-button type="primary" icon="plus" @click="handleAdd">新建</a-button>
-        <a-dropdown v-action:edit v-if="selectedRowKeys.length > 0">
+        <a-button type="primary" icon="plus" @click="handleAdd">Thêm mới</a-button>
+<!--        <a-dropdown v-action:edit v-if="selectedRowKeys.length > 0">-->
+        <a-dropdown >
           <a-menu slot="overlay">
-            <a-menu-item key="1"><a-icon type="delete" />删除</a-menu-item>
+            <a-menu-item key="1"><a-icon type="warning" />Chuyển lớp</a-menu-item>
+            <a-menu-item key="1"><a-icon type="info" />Thông báo cho phụ huynh</a-menu-item>
             <!-- lock | unlock -->
-            <a-menu-item key="2"><a-icon type="lock" />锁定</a-menu-item>
+            <a-menu-item key="2"><a-icon type="delete" />Xóa</a-menu-item>
           </a-menu>
           <a-button style="margin-left: 8px">
-            批量操作 <a-icon type="down" />
+            Thao tác hàng loạt <a-icon type="down" />
           </a-button>
         </a-dropdown>
       </div>
@@ -82,7 +84,6 @@
         rowKey="key"
         :columns="columns"
         :data="loadData"
-        :alert="true"
         :rowSelection="rowSelection"
         showPagination="auto"
       >
@@ -98,9 +99,9 @@
 
         <span slot="action" slot-scope="text, record">
           <template>
-            <a @click="handleEdit(record)">配置</a>
+            <a @click="handleEdit(record)">Chỉnh sửa</a>
             <a-divider type="vertical" />
-            <a @click="handleSub(record)">订阅报警</a>
+            <a @click="handleSub(record)">Xóa</a>
           </template>
         </span>
       </s-table>
@@ -132,33 +133,35 @@ const columns = [
     scopedSlots: { customRender: 'serial' }
   },
   {
-    title: '规则编号',
-    dataIndex: 'no'
+    title: 'Tên người dùng',
+    dataIndex: 'no',
+    sorter: true,
   },
   {
-    title: '描述',
+    title: 'Tên đăng nhập',
+    sorter: true,
     dataIndex: 'description',
     scopedSlots: { customRender: 'description' }
   },
   {
-    title: '服务调用次数',
+    title: 'Lớp',
     dataIndex: 'callNo',
     sorter: true,
     needTotal: true,
     customRender: (text) => text + ' 次'
   },
   {
-    title: '状态',
+    title: 'Trạng thái',
     dataIndex: 'status',
     scopedSlots: { customRender: 'status' }
   },
   {
-    title: '更新时间',
+    title: 'Ngày cập nhật',
     dataIndex: 'updatedAt',
     sorter: true
   },
   {
-    title: '操作',
+    title: 'Tiện ích',
     dataIndex: 'action',
     width: '150px',
     scopedSlots: { customRender: 'action' }
@@ -168,19 +171,19 @@ const columns = [
 const statusMap = {
   0: {
     status: 'default',
-    text: '关闭'
+    text: 'Tạm ngừng'
   },
   1: {
     status: 'processing',
-    text: '运行中'
+    text: 'Đang hoạt động'
   },
   2: {
     status: 'success',
-    text: '已上线'
+    text: 'Đã tốt nghiệp'
   },
   3: {
     status: 'error',
-    text: '异常'
+    text: 'Error'
   }
 }
 
@@ -264,7 +267,7 @@ export default {
               // 刷新表格
               this.$refs.table.refresh()
 
-              this.$message.info('修改成功')
+              this.$message.info('Sửa thành công')
             })
           } else {
             // 新增
@@ -280,7 +283,7 @@ export default {
               // 刷新表格
               this.$refs.table.refresh()
 
-              this.$message.info('新增成功')
+              this.$message.info('Thêm thành công')
             })
           }
         } else {

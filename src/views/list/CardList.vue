@@ -5,7 +5,6 @@
     :tab-change="(key) => {
       this.tabActiveKey = key
     }"
-    content="段落示意：蚂蚁金服务设计平台 ant.design，用最小的工作量，无缝接入蚂蚁金服生态， 提供跨越设计与开发的体验解决方案。"
   >
     <template v-slot:extraContent>
       <div style="width: 155px; margin-top: -20px;"><img style="width: 100%" :src="extraImage" /></div>
@@ -20,7 +19,7 @@
         <template v-if="!item || item.id === undefined">
           <a-button class="new-btn" type="dashed">
             <a-icon type="plus"/>
-            新增产品
+            Thêm mới
           </a-button>
         </template>
         <template v-else>
@@ -31,8 +30,9 @@
               <div class="meta-content" slot="description">{{ item.content }}</div>
             </a-card-meta>
             <template class="ant-card-actions" slot="actions">
-              <a>操作一</a>
-              <a>操作二</a>
+              <a>Chỉnh sửa</a>
+              <a>Thêm người vào lớp</a>
+              <a>Xóa</a>
             </template>
           </a-card>
         </template>
@@ -58,13 +58,12 @@ export default {
   name: 'CardList',
   data () {
     this.tabList = [
-      { key: 'tab1', tab: '快速开始' },
+      { key: 'tab1', tab: 'Danh sách lớp' },
       { key: 'tab2', tab: '产品简介' },
       { key: 'tab3', tab: '产品文档' }
     ]
     return {
       tabActiveKey: 'tab1',
-
       extraImage: 'https://gw.alipayobjects.com/zos/rmsportal/RzwpdLnhmvDJToTdfDPe.png',
       dataSource
     }

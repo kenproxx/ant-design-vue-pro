@@ -1,45 +1,50 @@
 <template>
   <page-header-wrapper>
     <a-card :bordered="false">
-      <a-descriptions title="退款申请">
-        <a-descriptions-item label="取货单号">1000000000</a-descriptions-item>
-        <a-descriptions-item label="状态">已取货</a-descriptions-item>
-        <a-descriptions-item label="销售单号">1234123421</a-descriptions-item>
-        <a-descriptions-item label="子订单">3214321432</a-descriptions-item>
+      <a-descriptions title="Thông tin cá nhân">
+        <a-descriptions-item label="Tên thánh">1000000000</a-descriptions-item>
+        <a-descriptions-item label="Tên gọi">3214321432</a-descriptions-item>
+        <a-descriptions-item label="Ngày tháng năm sinh">已取货</a-descriptions-item>
+        <a-descriptions-item label="Số điện thoại">1234123421</a-descriptions-item>
+        <a-descriptions-item label="Email">1234123421</a-descriptions-item>
       </a-descriptions>
       <a-divider style="margin-bottom: 32px"/>
-      <a-descriptions title="用户信息">
-        <a-descriptions-item label="用户姓名">付小小</a-descriptions-item>
-        <a-descriptions-item label="联系电话">18100000000</a-descriptions-item>
-        <a-descriptions-item label="常用快递">菜鸟仓储</a-descriptions-item>
-        <a-descriptions-item label="取货地址">浙江省杭州市西湖区万塘路18号</a-descriptions-item>
-        <a-descriptions-item label="备注">	无</a-descriptions-item>
+      <a-descriptions title="Thông tin chi tiết">
+        <a-descriptions-item label="Ngày bổn mạng">	无</a-descriptions-item>
+        <a-descriptions-item label="Ngày rửa tội">付小小</a-descriptions-item>
+        <a-descriptions-item label="Người rửa tội">18100000000</a-descriptions-item>
+        <a-descriptions-item label="Ngày thêm sức">菜鸟仓储</a-descriptions-item>
+        <a-descriptions-item label="Người thêm sức">浙江省杭州市西湖区万塘路18号</a-descriptions-item>
+      </a-descriptions>
+      <a-divider style="margin-bottom: 32px"/>
+      <a-descriptions title="Thông tin liên hệ">
+        <a-descriptions-item label="Tên thánh bố">	无</a-descriptions-item>
+        <a-descriptions-item label="Tên gọi bố">	无</a-descriptions-item>
+        <a-descriptions-item label="Số điện thoại bố">付小小</a-descriptions-item>
+        <a-descriptions-item label="Tên thánh mẹ">18100000000</a-descriptions-item>
+        <a-descriptions-item label="Tên gọi mẹ">18100000000</a-descriptions-item>
+        <a-descriptions-item label="Số điện thoại mẹ">菜鸟仓储</a-descriptions-item>
+        <a-descriptions-item label="Thuộc">浙江省杭州市西湖区万塘路18号</a-descriptions-item>
+        <a-descriptions-item label="Địa chỉ">浙江省杭州市西湖区万塘路18号</a-descriptions-item>
       </a-descriptions>
       <a-divider style="margin-bottom: 32px"/>
 
-      <div class="title">退货商品</div>
-      <s-table
-        style="margin-bottom: 24px"
-        row-key="id"
-        :columns="goodsColumns"
-        :data="loadGoodsData">
+<!--  Tình trạng học tập - Sẽ update-->
+<!--      <div class="title">Tình trạng học tập</div>-->
+<!--      <s-table-->
+<!--        style="margin-bottom: 24px"-->
+<!--        row-key="key"-->
+<!--        :columns="scheduleColumns"-->
+<!--        :data="loadScheduleData">-->
 
-      </s-table>
+<!--        <template-->
+<!--          slot="status"-->
+<!--          slot-scope="status">-->
+<!--          <a-badge :status="status" :text="status | statusFilter"/>-->
+<!--        </template>-->
 
-      <div class="title">退货进度</div>
-      <s-table
-        style="margin-bottom: 24px"
-        row-key="key"
-        :columns="scheduleColumns"
-        :data="loadScheduleData">
+<!--      </s-table>-->
 
-        <template
-          slot="status"
-          slot-scope="status">
-          <a-badge :status="status" :text="status | statusFilter"/>
-        </template>
-
-      </s-table>
     </a-card>
   </page-header-wrapper>
 </template>

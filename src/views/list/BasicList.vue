@@ -3,13 +3,13 @@
     <a-card :bordered="false">
       <a-row>
         <a-col :sm="8" :xs="24">
-          <info title="我的待办" value="8个任务" :bordered="true" />
+          <info title="Huynh Trưởng" value="8" :bordered="true" />
         </a-col>
         <a-col :sm="8" :xs="24">
-          <info title="本周任务平均处理时间" value="32分钟" :bordered="true" />
+          <info title="Dự Trưởng" value="10" :bordered="true" />
         </a-col>
         <a-col :sm="8" :xs="24">
-          <info title="本周完成任务数" value="24个" />
+          <info title="Trợ Tá" value="5" />
         </a-col>
       </a-row>
     </a-card>
@@ -17,19 +17,14 @@
     <a-card
       style="margin-top: 24px"
       :bordered="false"
-      title="标准列表">
+      title="Danh sách Huynh trưởng">
 
       <div slot="extra">
-        <a-radio-group v-model="status">
-          <a-radio-button value="all">全部</a-radio-button>
-          <a-radio-button value="processing">进行中</a-radio-button>
-          <a-radio-button value="waiting">等待中</a-radio-button>
-        </a-radio-group>
         <a-input-search style="margin-left: 16px; width: 272px;" />
       </div>
 
       <div class="operate">
-        <a-button type="dashed" style="width: 100%" icon="plus" @click="add">添加</a-button>
+        <a-button type="dashed" style="width: 100%" icon="plus" @click="add">Thêm mới</a-button>
       </div>
 
       <a-list size="large" :pagination="{showSizeChanger: true, showQuickJumper: true, pageSize: 5, total: 50}">
@@ -39,24 +34,18 @@
             <a slot="title">{{ item.title }}</a>
           </a-list-item-meta>
           <div slot="actions">
-            <a @click="edit(item)">编辑</a>
+            <a @click="edit(item)">Chỉnh sửa</a>
           </div>
           <div slot="actions">
-            <a-dropdown>
-              <a-menu slot="overlay">
-                <a-menu-item><a>编辑</a></a-menu-item>
-                <a-menu-item><a>删除</a></a-menu-item>
-              </a-menu>
-              <a>更多<a-icon type="down"/></a>
-            </a-dropdown>
+            <a @click="edit(item)">Xóa</a>
           </div>
           <div class="list-content">
             <div class="list-content-item">
-              <span>Owner</span>
+              <span>Cấp bậc</span>
               <p>{{ item.owner }}</p>
             </div>
             <div class="list-content-item">
-              <span>开始时间</span>
+              <span>Ngày sinh</span>
               <p>{{ item.startAt }}</p>
             </div>
             <div class="list-content-item">
@@ -96,10 +85,10 @@ data.push({
   }
 })
 data.push({
-  title: 'Ant Design',
+  title: 'Tên thánh',
   avatar: 'https://gw.alipayobjects.com/zos/rmsportal/dURIMkkrRFpPgTuzkwnB.png',
-  description: '生命就像一盒巧克力，结果往往出人意料',
-  owner: '林东东',
+  description: 'Tên gọi',
+  owner: 'cấp bậc',
   startAt: '2018-07-26 22:44',
   progress: {
     value: 66
